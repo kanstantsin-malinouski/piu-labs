@@ -14,7 +14,53 @@ body {
   align-items: center;
   min-height: 100vh;
   color: var(--white);
+  box-sizing: border-box;
+  overflow: hidden;
 }
+
+/* Index Page */
+.index_container {
+  text-align: center;
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.05);
+  padding: 60px 100px;
+  border-radius: 15px;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+}
+
+.initials {
+  font-size: 45px;
+  letter-spacing: 1.6px;
+  margin-bottom: 40px;
+  color: #4da8ff;
+}
+
+.index_navbar a {
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 25px;
+  letter-spacing: 0.5px;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.index_navbar a::after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: -6px;
+  left: 0;
+  background: #4da8ff;
+  transition: width 0.3s ease;
+}
+
+.index_navbar a:hover::after {
+  width: 100%;
+}
+
+/* LogIn Page */
 
 .login-container {
   text-align: center;
@@ -114,20 +160,21 @@ header h1 {
   color: #e0f3ff;
 }
 
-nav {
+.nav_bar,
+.index_navbar {
   display: flex;
   justify-content: center;
-  gap: 24px;
+  gap: 40px;
 }
 
-nav a {
+.nav_bar a {
   color: #4da8ff;
   text-decoration: none;
   font-weight: 500;
   transition: color 0.3s;
 }
 
-nav a:hover {
+.nav_bar a:hover {
   color: #ffcc00;
 }
 
