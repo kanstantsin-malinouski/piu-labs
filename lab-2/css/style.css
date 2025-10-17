@@ -7,13 +7,61 @@ html {
 body {
   margin: 1rem;
   padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  background-attachment: fixed;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  color: white;
+  box-sizing: border-box;
 }
 
-a {
-  color: #0066cc; /* niebieski kolor linków */
-  text-decoration: none; /* bez podkreślenia */
-  font-size: 1.4rem;
+.index_container {
+  text-align: center;
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.05);
+  padding: 60px 100px;
+  border-radius: 15px;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
 }
-a:hover {
-  text-decoration: underline; /* podkreślenie przy najechaniu */
+
+.initials {
+  font-size: 45px;
+  letter-spacing: 1.6px;
+  margin-bottom: 40px;
+  color: #ffffff;
+}
+
+.index_navbar {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+
+.index_navbar a {
+  color: #0066cc;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.4rem;
+  letter-spacing: 0.5px;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.index_navbar a::after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: -6px;
+  left: 0;
+  background: #ffcc00;
+  transition: width 0.3s ease;
+}
+
+.index_navbar a:hover::after {
+  width: 100%;
 }
