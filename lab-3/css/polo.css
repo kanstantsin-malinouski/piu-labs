@@ -1,0 +1,281 @@
+:root {
+  --image-max: 500px;
+  --info-width: 300px;
+  --gap: 28px;
+  --page-pad: 22px;
+  --card-pad: 22px;
+  --radius: 14px;
+
+  --bg: #f0f0f0;
+  --card-bg: #ffffff;
+  --ink: #000000;
+  --muted: #475569;
+  --stroke: #2f5fa3;
+  --accent: #1f7ec9;
+  --accent-ink: #ffffff;
+  --shadow: 0 8px 24px rgba(2, 6, 23, 0.08);
+  --badge: var(--accent);
+
+  --product-image: url('/lab-3/images/polo_b.png');
+  --img-filter: none;
+
+  --swatch-1: #275aa7;
+  --swatch-2: #c02633;
+  --swatch-3: #16a34a;
+  --swatch-4: #eab308;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.5;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: var(--page-pad);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  margin: -1px;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.card {
+  width: min(
+    100%,
+    calc(
+      var(--image-max) + var(--gap) + var(--info-width) + 2 * var(--card-pad)
+    )
+  );
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  grid-template-columns: auto var(--info-width);
+  gap: var(--gap);
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  padding: var(--card-pad);
+  box-shadow: var(--shadow);
+  justify-content: center;
+}
+
+.photo {
+  --img-side: max(
+    180px,
+    min(
+      var(--image-max),
+      calc(
+        100vw - 2 * var(--page-pad) - 2 * var(--card-pad) - var(--info-width) -
+          var(--gap)
+      )
+    )
+  );
+  --img-1col: min(
+    var(--image-max),
+    calc(100vw - 2 * var(--page-pad) - 2 * var(--card-pad))
+  );
+  width: min(var(--img-2col), var(--img-1col));
+  aspect-ratio: 1/1;
+  border: 3px solid var(--stroke);
+  border-radius: calc(var(--radius) - 6px);
+  overflow: hidden;
+  flex: 1 1 var(--image-max);
+}
+
+.photo_img {
+  width: 100%;
+  height: 100%;
+  background-image: var(--product-image);
+  background-size: cover;
+  background-position: center;
+  filter: var(--img-filter);
+}
+
+.info {
+  width: var(--info-width);
+  flex: 0 0 var(--info-width);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  text-align: center;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 800;
+  margin: 4px 0;
+}
+
+.badge {
+  padding: 6px 10px;
+  border-radius: 10px;
+  background: var(--badge);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.lead {
+  color: var(--muted);
+  margin: 6px 0 22px;
+  max-width: 280px;
+}
+
+h4 {
+  margin: 14px 0 8px;
+  font-size: 14px;
+}
+
+.swatches {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.swatch {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid #cbd5e1;
+  box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.swatch[for='c-blue'] {
+  background: var(--swatch-1);
+}
+.swatch[for='c-red'] {
+  background: var(--swatch-2);
+}
+.swatch[for='c-green'] {
+  background: var(--swatch-3);
+}
+.swatch[for='c-yellow'] {
+  background: var(--swatch-4);
+}
+
+.sizes {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.size {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  background: #ffffff;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.size:hover {
+  border-color: #94a3b8;
+}
+
+.size:focus-visible {
+  outline: 2px solid var(--stroke);
+  outline-offset: 2px;
+}
+
+.price {
+  margin: 22px 0 10px;
+  font-size: 28px;
+  font-weight: 600;
+  color: var(--ink);
+  text-align: center;
+}
+
+.cta {
+  display: inline-grid;
+  grid-auto-flow: column;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 26px;
+  border-radius: 14px;
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-weight: 800;
+  text-decoration: none;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.cta::before {
+  content: '🛒';
+  font-size: 20px;
+}
+
+.cta:hover {
+  filter: brightness(0.95);
+}
+
+#c-blue:checked ~ .card {
+  --product-image: url('/lab-3/images/polo_b.png');
+  --accent: #1f7ec9;
+  --stroke: #2f5fa3;
+  --badge: #1f7ec9;
+  --img-filter: none;
+}
+#c-red:checked ~ .card {
+  --product-image: url('/lab-3/images/polo_r.png');
+  --accent: #c02633;
+  --stroke: #8f1a22;
+  --badge: #c02633;
+  --img-filter: none;
+}
+#c-green:checked ~ .card {
+  --product-image: url('/lab-3/images/polo_g.png');
+  --accent: #16a34a;
+  --stroke: #0b6b2e;
+  --badge: #16a34a;
+  --img-filter: none;
+}
+#c-yellow:checked ~ .card {
+  --product-image: url('/lab-3/images/polo_y.png');
+  --accent: #eab308;
+  --stroke: #b38a06;
+  --badge: #eab308;
+  --img-filter: none;
+}
+
+#c-blue:checked ~ .card .swatches [for='c-blue'],
+#c-red:checked ~ .card .swatches [for='c-red'],
+#c-green:checked ~ .card .swatches [for='c-green'],
+#c-yellow:checked ~ .card .swatches [for='c-yellow'] {
+  outline: 2px solid var(--stroke);
+  outline-offset: 2px;
+}
+
+#s-s:checked ~ .card .sizes [for='s-s'],
+#s-m:checked ~ .card .sizes [for='s-m'],
+#s-l:checked ~ .card .sizes [for='s-l'],
+#s-xl:checked ~ .card .sizes [for='s-xl'] {
+  background: var(--accent);
+  color: var(--accent-ink);
+  border-color: var(--accent);
+}

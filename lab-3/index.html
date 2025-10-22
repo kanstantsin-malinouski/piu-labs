@@ -2,11 +2,103 @@
 <html lang="pl">
   <head>
     <meta charset="UTF-8" />
-    <title>Lab 3</title>
-    <link rel="stylesheet" href="css/style.css" />
+    <title>Karta Produktu</title>
+    <link rel="stylesheet" href="css/polo.css" />
   </head>
   <body>
-    <h1>Lab 3</h1>
-    <a href="..">Powrót</a>
+    <input
+      type="radio"
+      class="visually-hidden"
+      name="color"
+      id="c-blue"
+      checked
+      aria-label="Wybierz kolor: niebieski"
+    />
+    <input
+      type="radio"
+      class="visually-hidden"
+      name="color"
+      id="c-red"
+      aria-label="Wybierz kolor: czerwony"
+    />
+    <input
+      type="radio"
+      class="visually-hidden"
+      name="color"
+      id="c-green"
+      aria-label="Wybierz kolor: zielony"
+    />
+    <input
+      type="radio"
+      class="visually-hidden"
+      name="color"
+      id="c-yellow"
+      aria-label="Wybierz kolor: żółty"
+    />
+
+    <input
+      type="radio"
+      class="visually-hidden"
+      name="size"
+      id="s-s"
+      checked
+      aria-label="Wybierz rozmiar: S"
+    />
+    <input
+      type="radio"
+      class="visually-hidden"
+      name="size"
+      id="s-m"
+      aria-label="Wybierz rozmiar: M"
+    />
+    <input
+      type="radio"
+      class="visually-hidden"
+      name="size"
+      id="s-l"
+      aria-label="Wybierz rozmiar: L"
+    />
+    <input
+      type="radio"
+      class="visually-hidden"
+      name="size"
+      id="s-xl"
+      aria-label="Wybierz rozmiar: XL"
+    />
+
+    <main class="card">
+      <section class="photo">
+        <div class="photo_img"></div>
+      </section>
+      <section class="info">
+        <div class="header">
+          <h2 class="title">Koszulka Polo</h2>
+          <span class="badge">Promocja!</span>
+        </div>
+        <p class="lead">
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perspiciatis
+          commodi nihil odio ea harum eveniet. Quasi doloribus laboriosam
+          molestiae dolor.
+        </p>
+
+        <h4>Kolor</h4>
+        <div class="swatches">
+          <label class="swatch" for="c-blue"></label>
+          <label class="swatch" for="c-red"></label>
+          <label class="swatch" for="c-green"></label>
+          <label class="swatch" for="c-yellow"></label>
+        </div>
+
+        <h4>Roziar</h4>
+        <div class="sizes">
+          <label for="s-s" class="size">S</label>
+          <label for="s-m" class="size">M</label>
+          <label for="s-l" class="size">L</label>
+          <label for="s-xl" class="size">XL</label>
+        </div>
+        <div class="price">59,99 zł</div>
+        <a href="#" class="cta">Do koszyka</a>
+      </section>
+    </main>
   </body>
 </html>
