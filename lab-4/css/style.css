@@ -1,12 +1,8 @@
 /* Minimalny reset  */
 html {
   font-size: 16px; /* bazowy rozmiar czcionki */
-  font-family: system-ui, sans-serif; /* font systemowy */
   line-height: 1.5; /* lepsza czytelność */
-}
-body {
-  margin: 1rem;
-  padding: 0;
+  height:100%
 }
 
 a {
@@ -16,4 +12,210 @@ a {
 }
 a:hover {
   text-decoration: underline; /* podkreślenie przy najechaniu */
+}
+
+
+
+
+:root {
+  --bg:#0f172a;        /* ciemne tło */
+  --panel:#111827;     /* panel kolumny */
+  --card:#1f2937;      /* domyślna karta (nadpisywana kolorem) */
+  --text:#e5e7eb;
+  --muted:#94a3b8;
+  --accent:#22d3ee;
+  --danger:#ef4444;
+  --ok:#10b981;
+  --shadow: 0 6px 24px rgba(0,0,0,.25), 0 2px 6px rgba(0,0,0,.2);
+  --radius:16px;
+}
+*{box-sizing: border-box;}
+
+body {
+  margin: 0;
+  font-family: ui-sans-serif, system-ui;
+  color: var(--text);
+  height: 100%;
+  background: linear-gradient(135deg,#0b1224 0%, #111827 60%, #0f172a 100%);
+}
+
+.topbar {
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between;
+  padding: 20px clamp(16px, 4vw, 48px);
+}
+
+.topbar h1 {
+  margin: 0; 
+  font-size: clamp(20px, 3vw, 34px); 
+  letter-spacing: 0.5px;
+}
+
+.back {
+  color: var(--accent);
+  text-decoration: none; 
+  font-weight: 700;
+}
+.back:hover {
+  text-decoration: underline;
+}
+
+.board {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 0 clamp(12px, 3vw, 40px) 40px;
+  max-width: 1400px; 
+  margin: 0 auto;
+}
+
+.column {
+  background: rgba(255,255,255,.02);
+  border: 1px solid rgba(255,255,255,.06);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  display: flex; 
+  flex-direction: column;
+  min-height: 60vh;
+}
+
+.column__head {
+  padding: 16px; 
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+
+.column__head h2 {
+  margin: 0 0 10px 0; 
+  font-size: clamp(16px,2vw,22px);
+  display: flex; 
+  gap: 8px; 
+  align-items: baseline;
+}
+
+.counter {
+  color: var(--muted); 
+  font-weight: 600; 
+  font-size: .9em; 
+  background: rgba(255,255,255,.07);
+  padding: 2px 8px; 
+  border-radius: 999px;
+}
+
+.controls {
+  display: flex; 
+  gap: 8px; 
+  align-items: center; 
+  flex-wrap: wrap;
+}
+
+.btn {
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.1);
+  color: var(--text); 
+  padding: 8px 12px; 
+  border-radius: 10px;
+  cursor: pointer; 
+  font-weight: 600; 
+  transition: .15s transform, .15s opacity;
+}
+.btn:hover {
+  transform: translateY(-1px);
+}
+.btn.add {
+  border-color: rgba(34,211,238,.35);
+}
+.btn.colorize {
+  border-color: rgba(16,185,129,.35);
+}
+
+.sort {
+  font-size: .9rem; 
+  color: var(--muted);
+}
+.sort__select {
+  margin-left: 6px; 
+  background: rgba(255,255,255,.06); 
+  color: var(--text);
+  border: 1px solid rgba(255,255,255,.1); 
+  border-radius: 8px; 
+  padding: 6px 8px;
+}
+
+.cards {
+  padding: 14px; 
+  display: flex; 
+  flex-direction: column; 
+  gap: 12px;
+}
+
+.card {
+  background: var(--card);
+  border-radius: 14px;
+  padding: 12px 12px 10px;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(0,0,0,.2);
+}
+
+.card__top {
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between; 
+  gap: 8px; 
+  margin-bottom: 8px;
+}
+
+.card__title {
+  font-weight: 700; 
+  outline: none; 
+  width: 100%; 
+  padding: 2px 0;
+}
+
+.card__controls {
+  display: flex; 
+  gap: 6px;
+}
+
+.cbtn {
+  border: none; 
+  cursor: pointer; 
+  padding: 6px 8px; 
+  border-radius: 8px; 
+  font-weight: 700;
+  background: rgba(255,255,255,.12); 
+  color: var(--text);
+}
+.cbtn:hover {
+  filter: brightness(1.1);
+}
+
+.cbtn--del {
+  background: rgba(239,68,68,.2);
+}
+.cbtn--left, .cbtn--right {
+  background:rgba(255,255,255,.12);
+}
+.cbtn--paint { 
+  background:rgba(34,211,238,.18);
+}
+
+.card__body[contenteditable="true"] {
+  outline: none; 
+  white-space: pre-wrap;
+  border-radius: 8px; 
+  padding: 6px 8px; 
+  background: rgba(0,0,0,.15);
+}
+
+.empty{
+  color: var(--muted); 
+  text-align: center; 
+  padding: 20px; 
+  border: 1px dashed rgba(255,255,255,.12);
+  border-radius: 12px;
+}
+
+@media (max-width: 960px) {
+  .board{grid-template-columns:1fr; gap:14px}
 }

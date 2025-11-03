@@ -6,7 +6,72 @@
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    <h1>Lab 4</h1>
-    <a href="..">Powrót</a>
+    <header class="topbar">
+      <h1>Kanban</h1>
+      <a href=".." class="back">Back</a>
+    </header>
+
+    <main class="board" id="board">
+      <section class="column" data-col="todo">
+        <header class="column__head">
+          <h2>Do zrobienia <span class="counter" data-counter="todo">0</span></h2>
+          <div class="controls">
+            <button class="btn add" data-action="add" data-col="todo">Dodaj kartę</button>
+            <button class="btn colorize" data-action="colorize" data-col="todo">Koloruj kolumnę</button>
+            <label class="sort">
+              Sortuj:
+              <select class="sort__select" data-action="sort" data-col="todo">
+                <option value="created_desc">Najnowsze</option>
+                <option value="created_asc">Najstarsze</option>
+                <option value="title_asc">Tytuł A–Z</option>
+                <option value="title_desc">Tytuł Z–A</option>
+              </select>
+            </label>
+          </div>
+        </header>
+        <div class="cards" data-list="todo"></div>
+      </section>
+
+      <section class="column" data-col="doing">
+        <header class="column__head">
+          <h2>W trakcie <span class="counter" data-counter="doing">0</span></h2>
+          <div class="controls">
+            <button class="btn add" data-action="add" data-col="doing">Dodaj kartę</button>
+            <button class="btn colorize" data-action="colorize" data-col="doing">Koloruj kolumnę</button>
+            <label class="sort">
+              Sortuj:
+              <select class="sort__select" data-action="sort" data-col="doing">
+                <option value="created_desc">Najnowsze</option>
+                <option value="created_asc">Najstarsze</option>
+                <option value="title_asc">Tytuł A–Z</option>
+                <option value="title_desc">Tytuł Z–A</option>
+              </select>
+            </label>
+          </div>
+        </header>
+        <div class="cards" data-list="doing"></div>
+      </section>
+
+      <section class="column" data-col="done">
+        <header class="column__head">
+          <h2>Zrobione <span class="counter" data-counter="done">0</span></h2>
+          <div class="controls">
+            <button class="btn add" data-action="add" data-col="done">Dodaj kartę</button>
+            <button class="btn colorize" data-action="colorize" data-col="done">Koloruj kolumnę</button>
+            <label class="sort">
+              Sortuj:
+              <select class="sort__select" data-action="sort" data-col="done">
+                <option value="created_desc">Najnowsze</option>
+                <option value="created_asc">Najstarsze</option>
+                <option value="title_asc">Tytuł A–Z</option>
+                <option value="title_desc">Tytuł Z–A</option>
+              </select>
+            </label>
+          </div>
+        </header>
+        <div class="cards" data-list="done"></div>
+      </section>
+    </main>
+    <script src="js/app.js" defer></script>
   </body>
 </html>
