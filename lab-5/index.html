@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kształty</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+                sans-serif;
+            background: #125ac2;            
+            color: #e7ebff;
+            display: flex;
+            align-items: center;     
+            justify-content: center; 
+            padding: 16px;
+        }
+
+        .application-shell {
+            background: blue;
+            border-radius: 18px;
+            padding: 20px 22px;
+            max-width: 900px;
+            width: 100%;
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.7);
+            border: 1px solid rgba(160, 170, 240, 0.25);
+        }
+
+        .application-inner {
+            width: 100%;
+        }
+
+        header {
+            margin-bottom: 16px;
+        }
+
+        .title-block h1 {
+            margin: 0;
+            font-size: 1.5rem;
+            letter-spacing: 0.04em;
+        }
+
+        .layout {
+            display: flex;
+        }
+
+        .panel {
+            width: 100%;
+            background: green;
+            border-radius: 14px;
+            border: 1px solid rgba(150, 160, 220, 0.4);
+            padding: 16px;
+        }
+
+        .panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 12px;
+        }
+
+        .panel-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .panel-caption {
+            font-size: 0.8rem;
+            color: #a2a8d6;
+        }
+
+        .controls-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .app-btn {
+            border-radius: 8px;
+            border: 1px solid rgba(160, 170, 240, 0.45);
+            padding: 6px 10px;
+            background: linear-gradient(
+                135deg,
+                #1b2237 0%,
+                #141a2a 100%
+            );
+            color: inherit;
+            cursor: pointer;
+            font-size: 0.85rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition:
+                background 0.15s ease,
+                transform 0.15s ease,
+                box-shadow 0.15s ease,
+                border-color 0.15s ease;
+        }
+
+        .app-btn.secondary {
+            border-style: dashed;
+            border-color: rgba(184, 148, 255, 0.6);
+        }
+
+        .app-btn:hover {
+            background: linear-gradient(
+                135deg,
+                #242c45 0%,
+                #1a2135 100%
+            );
+            transform: translateY(-1px);
+            box-shadow: 0 10px 24px rgba(82, 109, 245, 0.45);
+            border-color: rgba(175, 186, 255, 0.8);
+        }
+
+        .label-main {
+            font-weight: 500;
+        }
+
+        .board {
+            min-height: 160px;
+            border-radius: 10px;
+            border: 1px dashed rgba(160, 170, 240, 0.55);
+            padding: 10px;
+            margin-bottom: 12px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            position: relative;
+            background: radial-gradient(circle at top left,
+                #181d30 0,
+                #101320 60%);
+        }
+
+        .board::before {
+            pointer-events: none;
+        }
+
+        .board.is-empty::before {
+            content: attr(data-empty-label);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            inset: 0;
+            font-size: 0.8rem;
+            color: #9fa4cf;
+        }
+
+        .shape {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            border: 2px solid rgba(255, 255, 255, 0.18);
+            cursor: pointer;
+            transition:
+                transform 0.15s ease,
+                box-shadow 0.15s ease,
+                border-color 0.15s ease;
+        }
+
+        .shape.square {
+            border-radius: 10px;
+        }
+
+        .shape.circle {
+            border-radius: 999px;
+        }
+
+        .shape:hover {
+            transform: translateY(-2px) scale(1.04);
+            border-color: rgba(210, 220, 255, 0.8);
+            box-shadow: 0 10px 20px rgba(56, 69, 160, 0.7);
+        }
+
+        .counters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .pill-group {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 8px;
+            border-radius: 999px;
+            background: #1a1e2e;
+            border: 1px solid rgba(170, 180, 255, 0.45);
+        }
+
+        .pill-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #a6acd8;
+        }
+
+        .pill-value {
+            font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+                "Liberation Mono", "Courier New", monospace;
+            font-size: 0.85rem;
+            padding: 2px 7px;
+            border-radius: 999px;
+            background: #101320;
+            border: 1px solid rgba(187, 195, 255, 0.8);
+            color: #eef1ff;
+        }
+    </style>
+</head>
+<body>
+    <div class="application-shell">
+        <div class="application-inner">
+            <header>
+                <div class="title-block">
+                    <h1>Kształty</h1>
+                </div>
+            </header>
+
+            <main class="layout">
+                <section class="panel">
+                    <div class="panel-header">
+                        <div class="panel-title">Plansza kształtów</div>
+                        <div class="panel-caption">Kliknij kształt, aby go usunąć.</div>
+                    </div>
+
+                    <div class="controls-row">
+                        <button id="btnAddSquare" class="app-btn">
+                            <span>🟦</span>
+                            <span class="label-main">Dodaj kwadrat</span>
+                        </button>
+                        <button id="btnAddCircle" class="app-btn">
+                            <span>⚪</span>
+                            <span class="label-main">Dodaj kółko</span>
+                        </button>
+                        <button id="btnRecolorSquares" class="app-btn secondary">
+                            <span>🎨</span>
+                            <span class="label-main">Przekoloruj kwadraty</span>
+                        </button>
+                        <button id="btnRecolorCircles" class="app-btn secondary">
+                            <span>🎨</span>
+                            <span class="label-main">Przekoloruj kółka</span>
+                        </button>
+                    </div>
+
+                    <div
+                        id="board"
+                        class="board is-empty"
+                        aria-label="plansza z kształtami"
+                        data-empty-label="Dodaj pierwszy kształt"
+                    ></div>
+
+                    <div class="counters">
+                        <div class="pill-group">
+                            <span class="pill-label">Kwadraty</span>
+                            <span id="cntSquares" class="pill-value">0</span>
+                        </div>
+                        <div class="pill-group">
+                            <span class="pill-label">Kółka</span>
+                            <span id="cntCircles" class="pill-value">0</span>
+                        </div>
+                        <div class="pill-group">
+                            <span class="pill-label">Wszystkie</span>
+                            <span id="cntTotal" class="pill-value">0</span>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <!-- ważne: ścieżka do modułu w folderze js -->
+    <script type="module" src="./js/app.js"></script>
+</body>
+</html>
