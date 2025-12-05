@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>Lab 6 – Ajax Demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="page">
+    <h1 class="page-title">Lab 6 – Ajax Demo</h1>
+
+    <div class="layout">
+      <section class="sidebar">
+        <div class="buttons">
+          <button id="btn-load" class="btn primary">Pobierz dane</button>
+          <button id="btn-error" class="btn danger">Pobierz z błędem</button>
+          <button id="btn-reset" class="btn">Resetuj widok</button>
+        </div>
+
+        <div id="loader" class="loader hidden">Ładowanie danych…</div>
+        <div id="errorBox" class="error hidden"></div>
+      </section>
+
+      <section class="content">
+        <h2 class="content-title">Wyniki</h2>
+        <ul id="list" class="list">
+        </ul>
+      </section>
+    </div>
+  </main>
+
+  <script src="ajax.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>
