@@ -3,181 +3,33 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Lab-7 — Karta produktu</title>
-    <script type="module" src="./components/product-card.js"></script>
+    <title>Lab-7 — Prawie sklep</title>
+    <script type="module" src="./app.js"></script>
 
     <style>
-      body {
-        margin: 0;
-        font-family: system-ui, Arial, sans-serif;
-        background: #f9fafb;
-        color: #111827;
-      }
-      header {
-        padding: 18px 16px;
-        border-bottom: 1px solid #e5e7eb;
-        background: #fff;
-        position: sticky;
-        top: 0;
-      }
-      .wrap {
-        max-width: 1100px;
-        margin: 0 auto;
-        padding: 18px 16px 40px;
-      }
-      .grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 16px;
-      }
-      .toast {
-        margin-top: 10px;
-        font-size: 13px;
-        color: #374151;
-      }
-
-      .badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        padding: 4px 10px;
-        border-radius: 999px;
-        background: #fee2e2;
-        color: #991b1b;
-        font-size: 12px;
-        font-weight: 650;
-      }
-      .swatches {
-        display: inline-flex;
-        gap: 6px;
-        align-items: center;
-      }
-      .dot {
-        width: 14px;
-        height: 14px;
-        border-radius: 999px;
-        border: 1px solid rgba(0,0,0,0.12);
-        display: inline-block;
-      }
-      .sizes {
-        display: inline-flex;
-        gap: 6px;
-        flex-wrap: wrap;
-      }
-      .size {
-        font-size: 12px;
-        padding: 4px 8px;
-        border-radius: 10px;
-        border: 1px solid #e5e7eb;
-        background: #fff;
-        color: #111827;
-      }
+      body { margin:0; font-family:system-ui, Arial, sans-serif; background:#f9fafb; color:#111827; }
+      header { padding:18px 16px; border-bottom:1px solid #e5e7eb; background:#fff; position:sticky; top:0; z-index:2; }
+      .wrap { max-width:1100px; margin:0 auto; padding:18px 16px 40px; }
+      .layout { display:grid; grid-template-columns: 1fr 320px; gap:16px; align-items:start; }
+      @media (max-width: 900px) { .layout { grid-template-columns: 1fr; } }
     </style>
   </head>
 
   <body>
     <header>
       <div class="wrap">
-        <h2 style="margin:0;">Lab-7 — Komponenty: Karta produktu</h2>
-        <div class="toast" id="toast">Kliknij “Do koszyka”, żeby zobaczyć event.</div>
+        <h2 style="margin:0;">Lab-7 — Prawie sklep</h2>
+        <div style="margin-top:6px; font-size:13px; color:#374151;">
+          Karty generowane z JSON, koszyk z sumą i usuwaniem.
+        </div>
       </div>
     </header>
 
     <main class="wrap">
-      <section class="grid">
-
-        <product-card>
-          <img slot="image" src="../lab-7/images/bluza.jpg" alt="Bluza Basic Hoodie" />
-          <span slot="name">Bluza Basic Hoodie</span>
-          <span slot="price">129,99 zł</span>
-
-          <span slot="promo" class="badge">-20% PROMO</span>
-
-          <span slot="colors" class="swatches">
-            <i class="dot" style="background:#111827;"></i>
-            <i class="dot" style="background:#9ca3af;"></i>
-            <i class="dot" style="background:#ef4444;"></i>
-          </span>
-
-          <span slot="sizes" class="sizes">
-            <span class="size">S</span><span class="size">M</span><span class="size">L</span><span class="size">XL</span>
-          </span>
-        </product-card>
-
-        <product-card>
-          <img slot="image" src="../lab-7/images/t-shirt.jpg" alt="T-shirt Premium Cotton" />
-          <span slot="name">T-shirt Premium Cotton</span>
-          <span slot="price">59,99 zł</span>
-
-          <span slot="colors" class="swatches">
-            <i class="dot" style="background:#2563eb;"></i>
-            <i class="dot" style="background:#111827;"></i>
-          </span>
-
-          <span slot="sizes" class="sizes">
-            <span class="size">XS</span><span class="size">S</span><span class="size">M</span><span class="size">L</span>
-          </span>
-        </product-card>
-
-        <product-card>
-          <img slot="image" src="../lab-7/images/kurtka.jpg" alt="Kurtka Softshell" />
-          <span slot="name">Kurtka Softshell</span>
-          <span slot="price">249,00 zł</span>
-
-          <span slot="sizes" class="sizes">
-            <span class="size">M</span><span class="size">L</span><span class="size">XL</span>
-          </span>
-        </product-card>
-
-        <product-card>
-          <img slot="image" src="../lab-7/images/czapka.jpg" alt="Czapka Classic Cap" />
-          <span slot="name">Czapka Classic Cap</span>
-          <span slot="price">39,90 zł</span>
-
-          <span slot="colors" class="swatches">
-            <i class="dot" style="background:#111827;"></i>
-            <i class="dot" style="background:#16a34a;"></i>
-            <i class="dot" style="background:#f59e0b;"></i>
-          </span>
-        </product-card>
-
-        <product-card>
-          <img slot="image" src="../lab-7/images/spodnie.webp" alt="Spodnie Cargo" />
-          <span slot="name">Spodnie Cargo</span>
-          <span slot="price">179,99 zł</span>
-
-          <span slot="promo" class="badge">HIT TYGODNIA</span>
-
-          <span slot="colors" class="swatches">
-            <i class="dot" style="background:#365314;"></i>
-            <i class="dot" style="background:#111827;"></i>
-          </span>
-
-          <span slot="sizes" class="sizes">
-            <span class="size">S</span><span class="size">M</span><span class="size">L</span>
-          </span>
-        </product-card>
-
-        <product-card>
-          <img slot="image" src="../lab-7/images/sneakers.png" alt="Sneakers Urban" />
-          <span slot="name">Sneakers Urban</span>
-          <span slot="price">299,00 zł</span>
-
-          <span slot="colors" class="swatches">
-            <i class="dot" style="background:#ffffff;"></i>
-            <i class="dot" style="background:#111827;"></i>
-          </span>
-        </product-card>
-
-      </section>
+      <div class="layout">
+        <product-list></product-list>
+        <shopping-cart></shopping-cart>
+      </div>
     </main>
-
-    <script>
-      document.addEventListener("add-to-cart", (e) => {
-        const { name, price } = e.detail || {};
-        const toast = document.getElementById("toast");
-        toast.textContent = `Dodano do koszyka: ${name} (${price})`;
-      });
-    </script>
   </body>
 </html>

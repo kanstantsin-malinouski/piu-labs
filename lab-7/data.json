@@ -1,0 +1,55 @@
+[
+  {
+    "id": "bluza",
+    "name": "Bluza Basic Hoodie",
+    "price": 129.99,
+    "currency": "zł",
+    "image": "./images/bluza.jpg",
+    "promo": "-20% PROMO",
+    "colors": ["#111827", "#9ca3af", "#ef4444"],
+    "sizes": ["S", "M", "L", "XL"]
+  },
+  {
+    "id": "tshirt",
+    "name": "T-shirt Premium Cotton",
+    "price": 59.99,
+    "currency": "zł",
+    "image": "./images/t-shirt.jpg",
+    "colors": ["#2563eb", "#111827"],
+    "sizes": ["XS", "S", "M", "L"]
+  },
+  {
+    "id": "kurtka",
+    "name": "Kurtka Softshell",
+    "price": 249.0,
+    "currency": "zł",
+    "image": "./images/kurtka.jpg",
+    "sizes": ["M", "L", "XL"]
+  },
+  {
+    "id": "czapka",
+    "name": "Czapka Classic Cap",
+    "price": 39.9,
+    "currency": "zł",
+    "image": "./images/czapka.jpg",
+    "colors": ["#111827", "#16a34a", "#f59e0b"]
+  },
+  {
+    "id": "spodnie",
+    "name": "Spodnie Cargo",
+    "price": 179.99,
+    "currency": "zł",
+    "image": "./images/spodnie.webp",
+    "promo": "HIT TYGODNIA",
+    "colors": ["#365314", "#111827"],
+    "sizes": ["S", "M", "L"]
+  },
+  {
+    "id": "sneakers",
+    "name": "Sneakers Urban",
+    "price": 299.0,
+    "currency": "zł",
+    "image": "./images/sneakers.png",
+    "colors": ["#ffffff", "#111827"]
+  }
+]
